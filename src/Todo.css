@@ -1,4 +1,13 @@
 .container{
     margin: auto;
     max-width: 90%;
+    font-size: 1.3em;
+}
+
+.done{
+    text-decoration: line-through;
+}
+
+button:first-child{
+    margin-left: 10px;
 }

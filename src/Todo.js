@@ -20,11 +20,22 @@ function Todo(){
         setItens(delItem); //sets the new array.
     }
 
+    function onDone(check){
+        let doneItem = itens.map((it)=>{
+            if(it.id === check.id){
+                it.done = !it.done; //changes the done value of the item.
+            }
+            return it;
+        })
+
+        setItens(doneItem); //sets the new array.
+    }
+
     return(
         <div className="container">
         <h1>Todo</h1>
         <TodoForm onAddItem={onAddItem}/> {/* '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
-        <List onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
+        <List onDone={onDone} onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
         </div>
     )
 }
