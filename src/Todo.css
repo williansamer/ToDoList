@@ -1,6 +1,6 @@
 .container{
     margin: auto;
-    max-width: 90%;
+    max-width: 600px;
     font-size: 1.3em;
 }
 
@@ -8,6 +8,25 @@
     text-decoration: line-through;
 }
 
-button:first-child{
-    margin-left: 10px;
+ul{
+    margin: auto;
+    list-style: none;
+}
+
+button{
+    margin-right: 2px;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    word-break: break-all; /* word-break: break-all is to break the long words */
+}
+
+.card{
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,0.3);
 }

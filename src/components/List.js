@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./Cards";
 
 function List(props){
 
@@ -13,9 +14,15 @@ function List(props){
     return(
         <ul>
             {props.itens.map((item)=>{
-                return <li className={item.done ? "done" : ""} key={item.id}>{item.text}
-                    <button onClick={()=>{props.onDone(item)}}><DoneImg done={item.done}></DoneImg></button>
-                    <button onClick={()=>props.onDeleteItem(item)}><img alt="delete" src="../../assets/bin.png"></img></button></li>})}
+                return <li key={item.id}>
+                    <Card className={item.done ? "done item" : "item"} >
+                        {item.text}
+                        <div>
+                            <button onClick={()=>{props.onDone(item)}}><DoneImg done={item.done}></DoneImg></button>
+                            <button onClick={()=>props.onDeleteItem(item)}><img alt="delete" src="../../assets/bin.png"></img></button>
+                        </div>
+                    </Card>
+                    </li>})}
         </ul> //'{()=>props.onDeleteItem(item)}' is an anonymous function, which takes an item as a parameter and calls the onDeleteItem function passing the item as a parameter to the parent component.
     )
 }
