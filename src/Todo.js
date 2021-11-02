@@ -4,9 +4,22 @@ import List from "./components/List";
 import TodoForm from "./components/TodoForm";
 import Item from "./components/Items";
 
+const SAVED_ITEMS = "savedItem";
+
 function Todo(){
 
     const [itens, setItens] = useState([]); //array of objects with the values of the input.
+
+    useEffect(() =>{ //this useEffect is a hook that runs after the component is rendered because there is no dependency.
+        const savedItens = JSON.parse(localStorage.getItem(SAVED_ITEMS));
+        if(savedItens){
+            setItens(savedItens);
+        }
+    }, []);
+
+    useEffect(()=>{ //this useEffect is a hook that runs after the state is updated, because there is a dependency(itens).
+        localStorage.setItem(SAVED_ITEMS, JSON.stringify(itens));
+    }, [itens]);
 
     function onAddItem(text){ //this function is called from the TodoForm component with the text value.
         let newItem = new Item(text); //creates a new Item object with the text value.
