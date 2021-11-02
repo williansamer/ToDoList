@@ -18,7 +18,7 @@ function TodoForm(props){
     }
 
     return(
-        <form>
+        <form  className="card-modal" >
             <input type="text" placeholder="Add Todo" onChange={handleChange} value={text}/> {/* 'value={text}' because we want to keep the value of the input when we change the state */}
             <button type="submit" onClick={addItem}>Add</button>
         </form>

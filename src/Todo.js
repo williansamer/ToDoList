@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Todo.css";
 import List from "./components/List";
 import TodoForm from "./components/TodoForm";
+import Modal from "./components/Modal";
 import Item from "./components/Items";
 
 const SAVED_ITEMS = "savedItem";
@@ -46,9 +47,13 @@ function Todo(){
 
     return(
         <div className="container">
-        <h1>Todo</h1>
-        <TodoForm onAddItem={onAddItem}/> {/* '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
-        <List onDone={onDone} onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
+            <header className="header">
+                <h1>Todo</h1>
+                <button className="btn-modal">+</button>
+            </header>
+            {/*<TodoForm onAddItem={onAddItem}/>  '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
+            <List onDone={onDone} onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
+            <Modal><TodoForm onAddItem={onAddItem}/></Modal>
         </div>
     )
 }
