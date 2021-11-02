@@ -5,7 +5,9 @@ function Modal(props){
 
     return(
         <div className="modal">
-            {props.children}
+            <Card className="card-modal" >
+                {props.children}
+            </Card>
         </div>
     )
 }
