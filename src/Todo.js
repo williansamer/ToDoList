@@ -25,7 +25,7 @@ function Todo(){
             if(it.id === check.id){
                 it.done = !it.done; //changes the done value of the item.
             }
-            return it;
+            return it; //returns the item with the new done value to the array.
         })
 
         setItens(doneItem); //sets the new array.
