@@ -3,8 +3,15 @@ import Card from "./Cards";
 
 function Modal(props){
 
+    function hideModal(e){
+        let target = e.target;
+        if(target.id === "modal"){
+            props.onHideModal();
+        }
+    }
+
     return(
-        <div className="modal">
+        <div id="modal" onClick={hideModal} className={props.showModal ? "modal" : "modal hide"}>
             <Card className="card-modal" >
                 {props.children}
             </Card>

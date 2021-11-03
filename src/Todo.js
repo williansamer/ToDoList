@@ -9,6 +9,7 @@ const SAVED_ITEMS = "savedItem";
 
 function Todo(){
 
+    const [showModal, setShowModal] = useState(false);
     const [itens, setItens] = useState([]); //array of objects with the values of the input.
 
     useEffect(() =>{ //this useEffect is a hook that runs after the component is rendered because there is no dependency.
@@ -26,6 +27,7 @@ function Todo(){
         let newItem = new Item(text); //creates a new Item object with the text value.
 
         setItens([...itens, newItem]); //the '...item' is used to spread the array and add the newItem value.
+        onHideModal();
     }
 
     function onDeleteItem(item){
@@ -45,15 +47,19 @@ function Todo(){
         setItens(doneItem); //sets the new array.
     }
 
+    function onHideModal(){
+        setShowModal(false);
+    }
+
     return(
         <div className="container">
             <header className="header">
                 <h1>Todo</h1>
-                <button className="btn-modal">+</button>
+                <button onClick={()=>setShowModal(true)} className="btn-modal">+</button>
             </header>
             {/*<TodoForm onAddItem={onAddItem}/>  '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
             <List onDone={onDone} onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
-            <Modal><TodoForm onAddItem={onAddItem}/></Modal>
+            <Modal showModal={showModal} onHideModal={onHideModal}><TodoForm onAddItem={onAddItem}/></Modal>
         </div>
     )
 }
