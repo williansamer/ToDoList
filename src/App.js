@@ -1,17 +1,23 @@
 import React, {useState, useEffect} from "react";
-import "./Todo.css";
+import "./App.css";
 import List from "./components/List";
 import TodoForm from "./components/TodoForm";
 import Modal from "./components/Modal";
 import Item from "./components/Items";
+import { createStore } from "redux";
+import reducerItem from "./reducers/reducerItem";
+import { Provider } from "react-redux";
 
 const SAVED_ITEMS = "savedItem";
 
-function Todo(){
+const store = createStore(reducerItem);
+
+function App(){
 
     const [showModal, setShowModal] = useState(false);
-    const [itens, setItens] = useState([]); //array of objects with the values of the input.
-
+    //const [itens, setItens] = useState([]); //array of objects with the values of the input.
+    
+/* 
     useEffect(() =>{ //this useEffect is a hook that runs after the component is rendered because there is no dependency.
         const savedItens = JSON.parse(localStorage.getItem(SAVED_ITEMS));
         if(savedItens){
@@ -45,7 +51,7 @@ function Todo(){
         })
 
         setItens(doneItem); //sets the new array.
-    }
+    } */
 
     function onHideModal(){
         setShowModal(false);
@@ -53,15 +59,17 @@ function Todo(){
 
     return(
         <div className="container">
-            <header className="header">
-                <h1>Todo</h1>
-                <button onClick={()=>setShowModal(true)} className="btn-modal">+</button>
-            </header>
-            {/*<TodoForm onAddItem={onAddItem}/>  '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
-            <List onDone={onDone} onDeleteItem={onDeleteItem} itens={itens}/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
-            <Modal showModal={showModal} onHideModal={onHideModal}><TodoForm onAddItem={onAddItem}/></Modal>
+            <Provider store={store}>
+                <header className="header">
+                    <h1>Todo</h1>
+                    <button onClick={()=>setShowModal(true)} className="btn-modal">+</button>
+                </header>
+                {/*<TodoForm onAddItem={onAddItem}/>  '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
+                <List/> {/* '{onDeleteItem}' is passed to the List component as a prop. From son to parent. */}
+                <Modal showModal={showModal} onHideModal={onHideModal}><TodoForm onHideModal={onHideModal}/></Modal>
+            </Provider>
         </div>
     )
 }
 
-export default Todo;
+export default App;
