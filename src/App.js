@@ -22,6 +22,7 @@ function loadState(){ //load the state from localStorage
 }
 
 const store = createStore(reducerItem, loadState()); // Creating a store with the reducerItem function and passing the current state of the store(loadState)
+//Existe o loadState aí, pois você consegue colocar um estado inicial que tem "uma importância superior" ao estado iniciado no reducer(reducerItem). Isso se chama preloadedState, ele está passando um valor que ficará no lugar da lista vazia que é o listReducer.
 
 store.subscribe(()=>{persistState(store.getState())}); // Saving the state of the store in localStorage always when the state changes.
 
