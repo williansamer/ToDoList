@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function List(){
 
-    const items = useSelector(state=>state);
+    const items = useSelector(state=>state); // useSelector - A hook to access the redux store's state. This hook takes a selector function as an argument. The selector is called with the store state.
 
     return(
         <ul>
