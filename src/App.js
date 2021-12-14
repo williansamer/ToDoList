@@ -39,8 +39,12 @@ function App(){
         <div className="container">
             <Provider store={store}>
                 <header className="header">
+<<<<<<< HEAD
                     <h1>Todo
                     </h1>
+=======
+                    <h1>Lista de Tarefas</h1>
+>>>>>>> 51f20f8f25e3c1c7f6da512e285eaa91b861a094
                     <button onClick={()=>setShowModal(true)} className="btn-modal">+</button>
                 </header>
                 {/*<TodoForm onAddItem={onAddItem}/>  '{onAddItem}' is passed to the List component as a prop. From son to parent. */}
