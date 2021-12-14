@@ -14,7 +14,7 @@ function ListItem(props){
                         {props.item.text}
                         <div>
                             <button onClick={()=>{dispatch(changeDone(props.item.id))}}><DoneImg done={props.item.done}></DoneImg></button>
-                            <button onClick={()=>{dispatch(deleteItem(props.item.id))}}><img alt="delete" src="../../public/assets/bin.png"></img></button>
+                            <button onClick={()=>{dispatch(deleteItem(props.item.id))}}><img alt="delete" src="./bin.png"></img></button>
                         </div>
                     </Card>
                     </li>
